@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <meta charset="UTF-8">
     <title>Books</title>
-    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="stylesheet.css"/>-->
 </head>
 <body>
+<header>
 </header>
 <section id="books-form">
     <div class="container">
         <h1>Add Book</h1>
-        <form action="">
+        <form id="add-book" action="">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" id="title">
@@ -28,8 +34,7 @@
     </div>
     <section id="books-table">
         <div class="container">
-            <table>
-                <div class="table-group">
+            <table id="book-list" class="table-group">
                     <tr>
                         <th>Title</th>
                         <th>Author</th>
@@ -37,41 +42,21 @@
                         <th> </th>
                     </tr>
                     <tr>
-                        <td>Tõde ja õigus</td>
+                        <td class="collection-item">Tõde ja õigus</td>
                         <td>A.H.Tammsaare</td>
                         <td>123789</td>
-                        <th><a href="#" class="secondary-content">X</a></th>
+                        <td><a href="#" class="secondary-content">X</a></td>
                     </tr>
                     <tr>
-                        <td>Naksitrallid</td>
+                        <td class="collection-item">Naksitrallid</td>
                         <td>Eno Raud</td>
                         <td>123788</td>
-                        <th><a href="#" class="secondary-content">X</a></th>
+                        <td><a href="#" class="secondary-content">X</a></td>
                     </tr>
-                </div>
             </table>
         </div>
     </section>
-    <!--<section id="data">
-        <div class="container">
-            <div class="box">
-                <h3>Asukoht</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-            </div>
-            <div class="box">
-                <h3>Söök</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-            </div>
-            <div class="box">
-                <h3>Sport</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-            </div>
-    </section>
-    -->
-                </ul>
-            </div>
-        </div>
-    </section>
+
 </section>
 
 
