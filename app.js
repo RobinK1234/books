@@ -1,9 +1,12 @@
-const form = document.querySelectorAll('form')
+const form = document.querySelectorAll('#add-book')
 const  bookList = document.querySelector('#book-list')
+const deleteTasks = document.querySelector('#delete-tasks')
+
 
 
 //form.addEventListener('submit', addBook)
 bookList.addEventListener('click', deleteTask)
+deleteTasks.addEventListener('click', deleteAllTasks)
 
 function addBook(event) {
     // get form input value
@@ -33,5 +36,10 @@ function deleteTask(event) {
         if(confirm('Are you sure to delete this task?')){
             event.target.parentElement.remove()
         }
+    }
+}
+function deleteAllTasks(event) {
+    while (bookList.firstChild){
+        bookList.removeChild(bookList.firstChild)
     }
 }
