@@ -48,7 +48,7 @@ isbnInput.value = '';
 */
 
     //add task value to localStorage
-                             addBookToLS(bookData.value)
+addBookToLS(bookData)
 }
 
 function deleteTask(event) {
@@ -79,6 +79,8 @@ function addBookToLS(boook) {
         console.log(typeof books)
 
     }
+    console.log(books)
     books.push(boook)
+    console.log(books)
     localStorage.setItem(`books`, JSON.stringify(books))
 }
