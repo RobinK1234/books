@@ -117,22 +117,34 @@ function deleteBookFromLS(boook) {
     localStorage.setItem(`books`, JSON.stringify(books))
 }
 
-function getBooksFromLS (event) {
+function getBooksFromLS(event) {
     let books
     if(localStorage.getItem(`tasks`) === null){
         books = []
     } else {
         books = JSON.parse(localStorage.getItem(`books`))
     }
-    books.forEach((bookFromLS) => {
+
+   // books.forEach((bookFromLS) => {
+
+
+/*
+        td.appendChild(document.createTextNode(bookFromLS))
+        td.className = 'collection-item'
+
+        const x = document.createElement('a')
+        x.appendChild(document.createTextNode('X'))
+        x.setAttribute('href', '#')
+        x.className = 'secondary-content'
+
+        td.appendChild(x)
+
+        const tr = document.querySelector('td')
+        tr.appendChild(td)
+*/
 
 
 
 
 
-
-
-
-
-    })
 }
