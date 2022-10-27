@@ -1,40 +1,54 @@
-const form = document.querySelectorAll('#add-book')
+const form = document.querySelector('#add-book')
 const  bookList = document.querySelector('#book-list')
 const deleteTasks = document.querySelector('#delete-tasks')
 
 
 
-//form.addEventListener('submit', addBook)
+form.addEventListener('submit', addBook)
 bookList.addEventListener('click', deleteTask)
 deleteTasks.addEventListener('click', deleteAllTasks)
 
 function addBook(event) {
     // get form input value
 }
-    /*
-    const bookInput = document.querySelectorAll(`form`)
-    console.log(bookInput)
-*/
-    // create td with value and x link
-/*
-    const td = document.createElement('td')
-    td.appendChild(document.createTextNode(bookInput.value))
-    td.className = 'collection-item'
 
-    const x = document.createElement('a')
-    x.appendChild(document.createTextNode('X'))
-    x.setAttribute('href', 'x')
-    x.className = 'secondary-content'
-    td.appendChild(x)
+    const bookInput = document.querySelector(`#title`)
+    const authorInput = document.querySelector(`#author`)
+    const isbnInput = document.querySelector(`#ISBN`)
 
-    const tr = document.querySelector('tr')
-    tr.appendChild(td)
+    let book = bookInput.value;
+    let author = authorInput.value;
+    let isbn = isbnInput.value;
+
+const bookData = [book, author, isbn]
+const tr = document.createElement('tr');
+for(let i = 0; i < bookData.length; i++) {
+    let td = document.createElement('td');
+    let text = document.createTextNode(bookData[i]);
+    td.appendChild(text);
+    tr.appendChild(td);
+    tr.appendChild(td);
+
 }
-*/
+td = document.createElement('td');
+const link = document.createElement('a');
+link.setAttribute('href', '#');
+link.appendChild(document.createTextNode('x'));
+td.appendChild(link);
+tr.appendChild(td);
+bookList.appendChild(tr);
+
+bookInput.value = '';
+authorInput.value = '';
+isbnInput.value = '';
+
+
+
+
 function deleteTask(event) {
     if(event.target.textContent === 'X'){
         if(confirm('Are you sure to delete this task?')){
-            event.target.parentElement.remove()
+            event.target.parentElement.parentElement.remove()
         }
     }
 }
