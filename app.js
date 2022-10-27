@@ -10,7 +10,6 @@ deleteTasks.addEventListener('click', deleteAllTasks)
 
 function addBook(event) {
     // get form input value
-}
 
     const bookInput = document.querySelector(`#title`)
     const authorInput = document.querySelector(`#author`)
@@ -28,12 +27,12 @@ for(let i = 0; i < bookData.length; i++) {
     td.appendChild(text);
     tr.appendChild(td);
     tr.appendChild(td);
-
 }
+
 td = document.createElement('td');
 const link = document.createElement('a');
 link.setAttribute('href', '#');
-link.appendChild(document.createTextNode('x'));
+link.appendChild(document.createTextNode('X'));
 td.appendChild(link);
 tr.appendChild(td);
 bookList.appendChild(tr);
@@ -41,7 +40,7 @@ bookList.appendChild(tr);
 bookInput.value = '';
 authorInput.value = '';
 isbnInput.value = '';
-
+}
 
 
 
