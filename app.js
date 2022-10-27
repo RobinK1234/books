@@ -7,6 +7,7 @@ const deleteTasks = document.querySelector('#delete-tasks')
 form.addEventListener('submit', addBook)
 bookList.addEventListener('click', deleteBook)
 deleteTasks.addEventListener('click', deleteAllBooks)
+document.addEventListener(`DOMContentLoaded`, getBooksFromLS)
 
 function addBook(event) {
     // get form input value
@@ -20,10 +21,28 @@ function addBook(event) {
     let isbn = isbnInput.value;
 
     //add values
-const bookData = [book, author, isbn]
-const tr = document.createElement('tr');
-for(let i = 0; i < bookData.length; i++) {
-    let td = document.createElement('td');
+
+    const bookData = [book, author, isbn]
+    const tr = document.createElement('tr');
+
+    bookData.forEach((dataItem) => {
+        const td = document.createElement('td');
+        td.appendChild(document.createTextNode(dataItem));
+        tr.appendChild(td);
+    })
+    const td = document.createElement('td');
+    const link = document.createElement('a');
+    link.setAttribute('href', '#');
+    link.appendChild(document.createTextNode('X'));
+    td.appendChild(link);
+    tr.appendChild(td);
+
+    bookList.appendChild(tr);
+
+    event.preventDefault();
+     /*
+    for(let i = 0; i < bookData.length; i++) {
+    const td = document.createElement('td');
     let text = document.createTextNode(bookData[i]);
     td.appendChild(text);
     tr.appendChild(td);
@@ -36,15 +55,6 @@ link.appendChild(document.createTextNode('X'));
 td.appendChild(link);
 tr.appendChild(td);
 bookList.appendChild(tr);
-
-/*
-
-JSON.stringify
-
-
-bookInput.value = '';
-authorInput.value = '';
-isbnInput.value = '';
 */
 
     //add task value to localStorage
@@ -69,12 +79,8 @@ function deleteAllBooks(event) {
     while (bookList.firstChild){
         bookList.removeChild(bookList.firstChild)
     }
+    localStorage.removeItem(`books`)
 }
-
-
-
-
-
 
 function addBookToLS(boook) {
     let books
@@ -109,4 +115,24 @@ function deleteBookFromLS(boook) {
     })
     console.log(books)
     localStorage.setItem(`books`, JSON.stringify(books))
+}
+
+function getBooksFromLS (event) {
+    let books
+    if(localStorage.getItem(`tasks`) === null){
+        books = []
+    } else {
+        books = JSON.parse(localStorage.getItem(`books`))
+    }
+    books.forEach((bookFromLS) => {
+
+
+
+
+
+
+
+
+
+    })
 }
