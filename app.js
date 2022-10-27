@@ -27,7 +27,6 @@ for(let i = 0; i < bookData.length; i++) {
     let text = document.createTextNode(bookData[i]);
     td.appendChild(text);
     tr.appendChild(td);
-    tr.appendChild(td);
 }
 
 td = document.createElement('td');
@@ -38,12 +37,19 @@ td.appendChild(link);
 tr.appendChild(td);
 bookList.appendChild(tr);
 
+/*
+
+JSON.stringify
+
+
 bookInput.value = '';
 authorInput.value = '';
 isbnInput.value = '';
+*/
+
+    //add task value to localStorage
+                             addBookToLS(bookData.value)
 }
-
-
 
 function deleteTask(event) {
     if(event.target.textContent === 'X'){
@@ -52,8 +58,27 @@ function deleteTask(event) {
         }
     }
 }
+
 function deleteAllTasks(event) {
     while (bookList.firstChild){
         bookList.removeChild(bookList.firstChild)
     }
+}
+
+
+
+
+
+
+function addBookToLS(boook) {
+    let books
+    if(localStorage.getItem(`books`) === null) {
+        books = []
+    } else {
+        books = JSON.parse(localStorage.getItem(`books`))
+        console.log(typeof books)
+
+    }
+    books.push(boook)
+    localStorage.setItem(`books`, JSON.stringify(books))
 }
