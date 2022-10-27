@@ -5,8 +5,8 @@ const deleteTasks = document.querySelector('#delete-tasks')
 
 
 form.addEventListener('submit', addBook)
-bookList.addEventListener('click', deleteTask)
-deleteTasks.addEventListener('click', deleteAllTasks)
+bookList.addEventListener('click', deleteBook)
+deleteTasks.addEventListener('click', deleteAllBooks)
 
 function addBook(event) {
     // get form input value
@@ -51,15 +51,21 @@ isbnInput.value = '';
 addBookToLS(bookData)
 }
 
-function deleteTask(event) {
+function deleteBook(event) {
     if(event.target.textContent === 'X'){
         if(confirm('Are you sure to delete this task?')){
             event.target.parentElement.parentElement.remove()
+            let isbn = event.target.parentElement.previousElementSibling
+            let author = isbn.previousElementSibling
+            let title = author.previousElementSibling
+            let book = [title.textContent, author.textContent, isbn.textContent]
+            console.log(book)
+            deleteBookFromLS(book)
         }
     }
 }
 
-function deleteAllTasks(event) {
+function deleteAllBooks(event) {
     while (bookList.firstChild){
         bookList.removeChild(bookList.firstChild)
     }
@@ -81,6 +87,26 @@ function addBookToLS(boook) {
     }
     console.log(books)
     books.push(boook)
+    console.log(books)
+    localStorage.setItem(`books`, JSON.stringify(books))
+}
+
+function deleteBookFromLS(boook) {
+    let books
+    if(localStorage.getItem(`books`) === null) {
+        books = []
+    } else {
+        books = JSON.parse(localStorage.getItem(`books`))
+        console.log(typeof books)
+
+    }
+    console.log(books)
+    books.forEach((bookFromLS, index) => {
+        if(JSON.stringify(bookFromLS) === JSON.stringify(boook)) {
+           books.splice(index, 1)
+        }
+        //STRINGIFY?!!?!?!?!?!??
+    })
     console.log(books)
     localStorage.setItem(`books`, JSON.stringify(books))
 }
