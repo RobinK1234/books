@@ -19,6 +19,7 @@ function addBook(event) {
     let author = authorInput.value;
     let isbn = isbnInput.value;
 
+    //add values
 const bookData = [book, author, isbn]
 const tr = document.createElement('tr');
 for(let i = 0; i < bookData.length; i++) {
