@@ -40,22 +40,7 @@ function addBook(event) {
     bookList.appendChild(tr);
 
     event.preventDefault();
-     /*
-    for(let i = 0; i < bookData.length; i++) {
-    const td = document.createElement('td');
-    let text = document.createTextNode(bookData[i]);
-    td.appendChild(text);
-    tr.appendChild(td);
-}
 
-td = document.createElement('td');
-const link = document.createElement('a');
-link.setAttribute('href', '#');
-link.appendChild(document.createTextNode('X'));
-td.appendChild(link);
-tr.appendChild(td);
-bookList.appendChild(tr);
-*/
 
     //add task value to localStorage
 addBookToLS(bookData)
@@ -117,6 +102,33 @@ function deleteBookFromLS(boook) {
     localStorage.setItem(`books`, JSON.stringify(books))
 }
 
+function getBooksFromLS(){
+    let books
+    if (localStorage.getItem('books') === null){
+        books = []
+    } else {
+        books = JSON.parse(localStorage.getItem('books'))
+    }
+    for (let i = 0; i < books.length; i++){
+        let book = books[i]
+        const tr = document.createElement('tr')
+        for (let i = 0; i < book.length; i++){
+            let td = document.createElement('td')
+            let text = document.createTextNode(book[i])
+            td.appendChild(text)
+            tr.appendChild(td)
+        }
+        td = document.createElement('td')
+        const link = document.createElement('a')
+        link.setAttribute('href', '#')
+        link.appendChild(document.createTextNode('X'))
+        td.appendChild(link)
+        tr.appendChild(td)
+        bookList.appendChild(tr)
+    }
+
+
+/*
 function getBooksFromLS(event) {
     let books
     if(localStorage.getItem(`tasks`) === null){
@@ -124,7 +136,7 @@ function getBooksFromLS(event) {
     } else {
         books = JSON.parse(localStorage.getItem(`books`))
     }
-
+*/
    // books.forEach((bookFromLS) => {
 
 
