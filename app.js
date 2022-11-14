@@ -137,7 +137,7 @@ function getBooksFromLS(event) {
         books = JSON.parse(localStorage.getItem(`books`))
     }
 */
-   // books.forEach((bookFromLS) => {
+
 
 
 /*
